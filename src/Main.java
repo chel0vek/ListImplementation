@@ -21,7 +21,7 @@ public class Main {
                     10. Узнать индекс элемента
                     11. Узнать индекс последнего элемента    
                     12. Добавить(вставить) элемент по индексу
-                    13. Конвертировать в массив
+                    13. toArray();
                     """);
             Scanner input = new Scanner(System.in);
             int choice = input.nextInt();
