@@ -4,6 +4,7 @@ public class MyArray implements List {
 
     static Object[] mainArr = new Object[9];
     int size = 0;
+    //ArrayList
 
     /**
      *
@@ -235,8 +236,15 @@ public class MyArray implements List {
         return null;
     }
 
+    /**
+     *
+     * @param fromIndex low endpoint (inclusive) of the subList
+     * @param toIndex high endpoint (exclusive) of the subList
+     * @return элементы из массива в промежутке от fromIndex до toIndex
+     */
     @Override
     public List subList(int fromIndex, int toIndex) {
-        return null;
+        var result = Arrays.copyOfRange(mainArr,fromIndex,toIndex + 1);
+        return List.of(result);
     }
 }
