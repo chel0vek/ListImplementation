@@ -244,7 +244,7 @@ public class MyArray implements List {
      */
     @Override
     public List subList(int fromIndex, int toIndex) {
-        var result = Arrays.copyOfRange(mainArr,fromIndex,toIndex + 1);
+        var result = Arrays.copyOfRange(mainArr,fromIndex,toIndex);
         return List.of(result);
     }
 }
