@@ -40,7 +40,18 @@ public class MyArray implements List {
 
     @Override
     public Iterator iterator() {
-        return null;
+        return new Iterator() {
+            int index = 0;
+            @Override
+            public boolean hasNext() {
+                return index < size;
+            }
+
+            @Override
+            public Object next() {
+                return mainArr[index++] ;
+            }
+        };
     }
 
     /**

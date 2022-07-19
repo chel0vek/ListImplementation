@@ -23,6 +23,7 @@ public class Main {
                     11. Узнать индекс последнего элемента    
                     12. Добавить(вставить) элемент по индексу
                     13. toArray();
+                    14. Итератор
                     """);
             Scanner input = new Scanner(System.in);
             int choice = input.nextInt();
@@ -110,6 +111,12 @@ public class Main {
             if (choice == 13) {
                 var elem = myList.toArray();
                 System.out.println(Arrays.toString(elem));
+            }
+            if (choice == 14) {
+                var elem = myList.iterator();
+                while (elem.hasNext()) {
+                    System.out.println(elem.next());
+                }
             }
         }
         catch (Exception e) {
