@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -107,7 +108,8 @@ public class Main {
                 System.out.println("Элемент " + el + " успешно добавлен " + "по индексу " + index);
             }
             if (choice == 13) {
-                myList.toArray();
+                var elem = myList.toArray();
+                System.out.println(Arrays.toString(elem));
             }
         }
         catch (Exception e) {

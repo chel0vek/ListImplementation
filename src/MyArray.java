@@ -6,8 +6,9 @@ public class MyArray implements List {
     int size = 0;
 
     /**
+     *
      * @return Значение длины массива
-     * */
+     */
     @Override
     public int size() {
         return size;
@@ -42,14 +43,17 @@ public class MyArray implements List {
         return null;
     }
 
-    @Override
+    /**
+     *
+     * @return
+     */
     public Object[] toArray() {
-        return Arrays.copyOf(mainArr, size);
+        return Arrays.copyOf(mainArr,size);
     }
 
     @Override
     public Object[] toArray(Object[] a) {
-        return new Object[0];
+        return Arrays.copyOf(a,a.length);
     }
 
     /**
@@ -211,6 +215,7 @@ public class MyArray implements List {
 
     @Override
     public ListIterator listIterator() {
+
         return null;
     }
 
