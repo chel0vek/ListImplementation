@@ -4,10 +4,9 @@ public class MyArray implements List {
 
     static Object[] mainArr = new Object[9];
     int size = 0;
-    //ArrayList
 
     /**
-     *
+     * Метод, возвращающий длину массива
      * @return Значение длины массива
      */
     @Override
@@ -16,7 +15,7 @@ public class MyArray implements List {
     }
 
     /**
-     *
+     * Метод, проверяющий пустой массив или нет
      * @return true, если массив пустой, иначе false
      */
     @Override
@@ -25,7 +24,7 @@ public class MyArray implements List {
     }
 
     /**
-     *
+     * Метод, проверяющий есть ли указанный элемент в массиве
      * @param o element whose presence in this list is to be tested
      * @return true, если элемент о находится в массиве, иначе false
      */
@@ -39,15 +38,28 @@ public class MyArray implements List {
         return false;
     }
 
+    /**
+     * Метод, перебирающий все элементы массива
+     * @return new iterator
+     */
     @Override
     public Iterator iterator() {
         return new Iterator() {
             int index = 0;
+
+            /**
+             * Метод, проверяющий есть ли следующий элемент
+             * @return true, если есть следующий элемент, иначе false
+             */
             @Override
             public boolean hasNext() {
                 return index < size;
             }
 
+            /**
+             * Метод, возвращающий следующий элемент
+             * @return элемент из данного массива
+             */
             @Override
             public Object next() {
                 return mainArr[index++] ;
@@ -56,8 +68,8 @@ public class MyArray implements List {
     }
 
     /**
-     *
-     * @return
+     * Метод, возвращающий копию массива
+     * @return copy of Main Array
      */
     public Object[] toArray() {
         return Arrays.copyOf(mainArr,size);
@@ -65,11 +77,10 @@ public class MyArray implements List {
 
     @Override
     public Object[] toArray(Object[] a) {
-        return Arrays.copyOf(a,a.length);
+        return Arrays.copyOf(a,a. length);
     }
-
     /**
-     *
+     * Метод, добавляющий элемент в массив
      * @param o element whose presence in this collection is to be ensured
      * @return true, если элемент успешно добавился в массив, иначе false
      */
@@ -89,7 +100,7 @@ public class MyArray implements List {
     }
 
     /**
-     *
+     * Метод, удаляющий указанный элемент при первом вхождении
      * @param o element to be removed from this list, if present
      * @return true, если элемент успешно удален из массива, иначе false
      */
@@ -132,7 +143,7 @@ public class MyArray implements List {
     }
 
     /**
-     * Очищает весь массив
+     * Метод, очищающий весь массив
      */
     @Override
     public void clear() {
@@ -143,7 +154,7 @@ public class MyArray implements List {
     }
 
     /**
-     *
+     * Метод, возращающий элемент из массива по данному индексу.
      * @param index index of the element to return
      * @return возвращает элемент массива под данным индексом
      */
@@ -153,7 +164,7 @@ public class MyArray implements List {
     }
 
     /**
-     *
+     * Метод, заменяющий элемент, находяйщися под данным индексом, на указанный элемент.
      * @param index index of the element to replace
      * @param element element to be stored at the specified position
      * @return вставляет значение element в массив под данным индексом
@@ -167,7 +178,9 @@ public class MyArray implements List {
     }
 
     /**
-     *
+     * Метод, вставляющий указанный элемент в массив в указанный индекс.
+     * Данный метод передвигает элемент находящийся под данным индексом
+     * и все последующие вправо.
      * @param index index at which the specified element is to be inserted
      * @param element element to be inserted
      */
@@ -181,7 +194,8 @@ public class MyArray implements List {
     }
 
     /**
-     *
+     * Метод, удаляющий элемент из данного массива, который находится под данным индексом.
+     * Данный метод перемещает все элементы находящиеся справо от удаленного элемента влево.
      * @param index the index of the element to be removed
      * @return обновленный массив
      */
@@ -196,7 +210,7 @@ public class MyArray implements List {
     }
 
     /**
-     *
+     * Метод, возвращающий индекс элемента при первом вхождении
      * @param o element to search for
      * @return индекс элемента o при первом вхождении
      */
@@ -211,7 +225,7 @@ public class MyArray implements List {
     }
 
     /**
-     *
+     * Метод, возвращающий индекс элемента при последнем вхождении
      * @param o element to search for
      * @return индекс элемента о при последнем вхождении
      */
@@ -237,7 +251,8 @@ public class MyArray implements List {
     }
 
     /**
-     *
+     * Метод, возвращающий элементы данного массива в промежутке от первого параметра до второго
+     * Не включительно.
      * @param fromIndex low endpoint (inclusive) of the subList
      * @param toIndex high endpoint (exclusive) of the subList
      * @return элементы из массива в промежутке от fromIndex до toIndex
