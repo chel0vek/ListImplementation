@@ -1,12 +1,12 @@
 import java.util.*;
 
-public class MyArray implements List {
-
-    static Object[] mainArr = new Object[9];
+public class TestArray<T> implements List<T> {
+    static Object[] mainArr = new Object[10];
     int size = 0;
 
     /**
      * Метод, возвращающий длину массива
+     *
      * @return Значение длины массива
      */
     @Override
@@ -16,6 +16,7 @@ public class MyArray implements List {
 
     /**
      * Метод, проверяющий пустой массив или нет
+     *
      * @return true, если массив пустой, иначе false
      */
     @Override
@@ -25,6 +26,7 @@ public class MyArray implements List {
 
     /**
      * Метод, проверяющий есть ли указанный элемент в массиве
+     *
      * @param o element whose presence in this list is to be tested
      * @return true, если элемент о находится в массиве, иначе false
      */
@@ -43,10 +45,9 @@ public class MyArray implements List {
      * @return new iterator
      */
     @Override
-    public Iterator iterator() {
-        return new Iterator() {
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
             int index = 0;
-
             /**
              * Метод, проверяющий есть ли следующий элемент
              * @return true, если есть следующий элемент, иначе false
@@ -61,43 +62,42 @@ public class MyArray implements List {
              * @return элемент из данного массива
              */
             @Override
-            public Object next() {
-                return mainArr[index++] ;
+            public T next() {
+                return (T) mainArr[index++];
             }
         };
     }
-
     /**
      * Метод, возвращающий копию массива
      * @return copy of Main Array
      */
+    @Override
     public Object[] toArray() {
         return Arrays.copyOf(mainArr,size);
     }
 
     @Override
-    public Object[] toArray(Object[] a) {
-        return Arrays.copyOf(a,a. length);
+    public <T1> T1[] toArray(T1[] a) {
+        return Arrays.copyOf(a, a.length);
     }
     /**
      * Метод, добавляющий элемент в массив
-     * @param o element whose presence in this collection is to be ensured
+     * @param t element whose presence in this collection is to be ensured
      * @return true, если элемент успешно добавился в массив, иначе false
      */
     @Override
-    public boolean add(Object o) {
+    public boolean add(T t) {
         if (mainArr.length - size == 4) {
-            Object[] newArr = new Object[mainArr.length * 2];
+            Object[] newArr = new Object[mainArr.length + 5];
             for (int i = 0; i < size; i++) {
                 newArr[i] = mainArr[i];
             }
             mainArr = newArr;
         }
-        mainArr[size] = o;
+        mainArr[size] = t;
         size++;
         return true;
     }
-
     /**
      * Метод, удаляющий указанный элемент при первом вхождении
      * @param o element to be removed from this list, if present
@@ -117,30 +117,29 @@ public class MyArray implements List {
     }
 
     @Override
-    public boolean containsAll(Collection c) {
+    public boolean containsAll(Collection<?> c) {
         return false;
     }
 
     @Override
-    public boolean addAll(Collection c) {
+    public boolean addAll(Collection<? extends T> c) {
         return false;
     }
 
     @Override
-    public boolean addAll(int index, Collection c) {
+    public boolean addAll(int index, Collection<? extends T> c) {
         return false;
     }
 
     @Override
-    public boolean removeAll(Collection c) {
+    public boolean removeAll(Collection<?> c) {
         return false;
     }
 
     @Override
-    public boolean retainAll(Collection c) {
+    public boolean retainAll(Collection<?> c) {
         return false;
     }
-
     /**
      * Метод, очищающий весь массив
      */
@@ -151,17 +150,15 @@ public class MyArray implements List {
         }
         size = 0;
     }
-
     /**
      * Метод, возращающий элемент из массива по данному индексу.
      * @param index index of the element to return
      * @return возвращает элемент массива под данным индексом
      */
     @Override
-    public Object get(int index) {
-        return mainArr[index];
+    public T get(int index) {
+        return (T) mainArr[index];
     }
-
     /**
      * Метод, заменяющий элемент, находяйщися под данным индексом, на указанный элемент.
      * @param index index of the element to replace
@@ -169,13 +166,12 @@ public class MyArray implements List {
      * @return вставляет значение element в массив под данным индексом
      */
     @Override
-    public Object set(int index, Object element) {
+    public T set(int index, T element) {
         if (element.equals(null)) {
-            return mainArr[index] = mainArr[index];
+            return (T) (mainArr[index] = mainArr[index]);
         }
-        return mainArr[index] = element;
+        return (T) (mainArr[index] = element);
     }
-
     /**
      * Метод, вставляющий указанный элемент в массив в указанный индекс.
      * Данный метод передвигает элемент находящийся под данным индексом и все последующие вправо.
@@ -183,14 +179,13 @@ public class MyArray implements List {
      * @param element element to be inserted
      */
     @Override
-    public void add(int index, Object element) {
-        for (int i = size() - 1; i >= index; i--) {
+    public void add(int index, T element) {
+        for (int i = size - 1; i >= index; i--) {
             mainArr[i + 1] = mainArr[i];
         }
         mainArr[index] = element;
         size += 1;
     }
-
     /**
      * Метод, удаляющий элемент из данного массива, который находится под данным индексом.
      * Данный метод перемещает все элементы находящиеся справо от удаленного элемента влево.
@@ -198,15 +193,14 @@ public class MyArray implements List {
      * @return обновленный массив
      */
     @Override
-    public Object remove(int index) {
+    public T remove(int index) {
         mainArr[index] = null;
         size--;
         for (int i = index; i < size - 1; i++) {
             mainArr[i] = mainArr[i + 1];
         }
-        return mainArr;
+        return (T) mainArr;
     }
-
     /**
      * Метод, возвращающий индекс элемента при первом вхождении
      * @param o element to search for
@@ -221,7 +215,6 @@ public class MyArray implements List {
         }
         return -1;
     }
-
     /**
      * Метод, возвращающий индекс элемента при последнем вхождении
      * @param o element to search for
@@ -238,16 +231,14 @@ public class MyArray implements List {
     }
 
     @Override
-    public ListIterator listIterator() {
-
+    public ListIterator<T> listIterator() {
         return null;
     }
 
     @Override
-    public ListIterator listIterator(int index) {
+    public ListIterator<T> listIterator(int index) {
         return null;
     }
-
     /**
      * Метод, возвращающий элементы данного массива в промежутке от первого параметра до второго
      * Не включительно.
@@ -256,8 +247,7 @@ public class MyArray implements List {
      * @return элементы из массива в промежутке от fromIndex до toIndex
      */
     @Override
-    public List subList(int fromIndex, int toIndex) {
-        var result = Arrays.copyOfRange(mainArr,fromIndex,toIndex);
-        return List.of(result);
+    public List<T> subList(int fromIndex, int toIndex) {
+        return null;
     }
 }

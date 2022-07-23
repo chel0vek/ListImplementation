@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-    static MyArray myList = new MyArray();
+    static TestArray myList = new TestArray();
     public static void main(String[] args) {
         menu();
     }
@@ -24,7 +24,6 @@ public class Main {
                     12. Добавить(вставить) элемент по индексу
                     13. toArray();
                     14. Итератор
-                    15. subList
                     """);
             Scanner input = new Scanner(System.in);
             int choice = input.nextInt();
@@ -119,14 +118,14 @@ public class Main {
                     System.out.println(elem.next());
                 }
             }
-            if (choice == 15) {
+            /*if (choice == 15) {
                 System.out.println("Введите начальный индекс");
                 int startIndex = input.nextInt();
                 System.out.println("Введите конечный индекс");
                 int finishIndex = input.nextInt();
                 var elem = myList.subList(startIndex,finishIndex);
                 System.out.println(elem);
-            }
+            }*/
         }
         catch (Exception e) {
             System.out.println(e);
